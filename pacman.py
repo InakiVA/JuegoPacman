@@ -2,10 +2,10 @@
 
 Exercises
 
-1. Change the board.
-2. Change the number of ghosts.
-3. Change where pacman starts.
-4. Make the ghosts faster/slower.
+1. Change the board.-Iñaki
+2. Change the number of ghosts.-Iñaki
+3. Change where pacman starts.-Iñaki
+4. Make the ghosts faster/slower.-Iñaki
 5. Make the ghosts smarter.
 """
 
@@ -20,9 +20,9 @@ writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(40, 20)#cambié de (-40,-80)
 ghosts = [
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
+    [vector(-180, 160), vector(10, 0)],
+    [vector(-180, -160), vector(0, 10)],
+    [vector(100, 160), vector(0, -10)],
     #aquí eliminé un fantasma
 ]
 # fmt: off
@@ -133,12 +133,12 @@ def move():
     for point, course in ghosts:
         if valid(point + course):
             point.move(course)
-        else:
+        else: #se hacen más rápidos
             options = [
-                vector(5, 0),
-                vector(-5, 0),
-                vector(0, 5),
-                vector(0, -5),
+                vector(10, 0), #eran 5 en vez de 10
+                vector(-10, 0),
+                vector(0, 10),
+                vector(0, -10),
             ]
             plan = choice(options)
             course.x = plan.x
