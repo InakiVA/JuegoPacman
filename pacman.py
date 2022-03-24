@@ -6,7 +6,7 @@ Exercises
 2. Change the number of ghosts.-Iñaki
 3. Change where pacman starts.-Iñaki
 4. Make the ghosts faster/slower.-Iñaki
-5. Make the ghosts smarter.
+5. Make the ghosts smarter.-Edrick
 """
 
 from random import choice
