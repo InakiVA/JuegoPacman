@@ -133,14 +133,57 @@ def move():
     for point, course in ghosts:
         if valid(point + course):
             point.move(course)
-        else: #se hacen más rápidos
-            options = [
-                vector(10, 0), #eran 5 en vez de 10
-                vector(-10, 0),
-                vector(0, 10),
-                vector(0, -10),
-            ]
-            plan = choice(options)
+        else:
+            option1 = vector(5, 0)
+            option2 = vector(-5, 0)
+            option3 = vector(0, 5)
+            option4 = vector(0, -5)
+
+            if pacman.x < point.x:
+                plan = option2
+            elif pacman.x > point.x:
+                plan = option1
+
+                course.x = plan.x
+                course.y = plan.y
+
+                if valid(point + course):
+                    point.move(course)
+                else:
+                    if pacman.y < point.y:
+                        plan = option4
+                    elif pacman.y > point.y:
+                        plan = option3
+
+            if pacman.y < point.y:
+                plan = option4
+            elif pacman.y > point.y:
+                plan = option3
+
+                course.x = plan.x
+                course.y = plan.y
+
+                if valid(point + course):
+                    point.move(course)
+                else:
+                    if pacman.x < point.x:
+                        plan = option2
+                    elif pacman.x > point.x:
+                        plan = option1
+                        
+            elif pacman.x == point.x:
+                if pacman.y < point.y:
+                    plan = option4
+                elif pacman.y > point.y:
+                    plan = option3
+
+            elif pacman.y == point.y:
+                if pacman.x < point.x:
+                    plan = option2
+                elif pacman.x > point.x:
+                    plan = option1
+            
+            course.x = plan.x
             course.x = plan.x
             course.y = plan.y
 
